@@ -1,0 +1,24 @@
+.todo-section {
+    display: flex;
+    justify-content: space-between;
+    width: 32vw;
+    padding: 12px;
+}
+
+.todo-left {
+    font-size: 1.2rem;
+}
+
+
+.todo-left input {
+    margin-right: 8px;
+}
+
+
+.todo-right {
+    font-size: 1.2rem;
+}
+
+.todo-right .edit-icon {
+    margin-right: 8px;
+}
