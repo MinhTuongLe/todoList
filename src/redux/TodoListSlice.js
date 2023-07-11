@@ -27,12 +27,14 @@ export default createSlice({
     },
     updateTodo: (state, action) => {
       const { id, name } = action.payload;
-      const todoIndex = state.findIndex((todo) => todo.id === id);
-      console.log(todoIndex)
-      if (todoIndex !== -1) {
-        state[todoIndex].name = name;
-        localStorage.setItem("todoList", JSON.stringify(state));
-      }
+      const updatedTodoList = state.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, name: name };
+        } else {
+          return todo;
+        }
+      });
+      localStorage.setItem("todoList", JSON.stringify(updatedTodoList));
     },
     completedAllTask: (state) => {
       const updatedTodoList = state.map((todo) => {

@@ -21,4 +21,35 @@
 
 .todo-right .edit-icon {
     margin-right: 8px;
+    cursor: pointer;
+}
+
+.remote-icon {
+    cursor: pointer;
+}
+
+.edit-input {
+    border: none;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.edit-input:focus {
+    border: none;
+    outline: none;
+}
+
+.button-save {
+    background-color: #5dae4f;
+    border: 1px #fff solid;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.button-save:hover {
+    filter: brightness(90%);
 }

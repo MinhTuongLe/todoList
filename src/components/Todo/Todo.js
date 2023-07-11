@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import todoListSlice from "../../redux/TodoListSlice";
 import "./Todo.css";
+import { toast } from "react-toastify";
+
 const Todo = ({ name, completed, id }) => {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(completed);
@@ -9,12 +11,22 @@ const Todo = ({ name, completed, id }) => {
   const [updatedTodoName, setUpdatedTodoName] = useState(name);
 
   const toggleCheckbox = () => {
-    setChecked(!checked);
-    dispatch(todoListSlice.actions.toggleStatus(id));
+    try {
+      setChecked(!checked);
+      dispatch(todoListSlice.actions.toggleStatus(id));
+      toast.success("Checked/Unchecked Successfully!", { autoClose: 1000 });
+    } catch (error) {
+      toast.error("Checked/Unchecked failed!", { autoClose: 1000 });
+    }
   };
 
   const handleRemoveButtonClicked = () => {
-    dispatch(todoListSlice.actions.removeTodo(id));
+    try {
+      dispatch(todoListSlice.actions.removeTodo(id));
+      toast.success("Remove Successfully!", { autoClose: 1000 });
+    } catch (error) {
+      toast.error("Remove failed!", { autoClose: 1000 });
+    }
   };
 
   const handleEditButtonClicked = () => {
@@ -22,23 +34,31 @@ const Todo = ({ name, completed, id }) => {
   };
 
   const handleSave = () => {
-    console.log(updatedTodoName)
-    dispatch(todoListSlice.actions.updateTodo({
-      id: id,
-      name: updatedTodoName,
-    }));
-    setIsEditing(false);
+    try {
+      dispatch(
+        todoListSlice.actions.updateTodo({
+          id: id,
+          name: updatedTodoName,
+        })
+      );
+      setIsEditing(false);
+      toast.success("Save Successfully!", { autoClose: 1000 });
+      window.location.reload();
+    } catch (error) {
+      toast.error("Save Failed!", { autoClose: 1000 });
+    }
   };
+
   return (
     <div className="todo-section">
       <div className="todo-left">
         <input type="checkbox" onChange={toggleCheckbox} checked={checked} />
         {isEditing ? (
           <input
+          className="edit-input"
             type="text"
             value={updatedTodoName}
             onChange={(event) => setUpdatedTodoName(event.target.value)}
-            onBlur={() => setIsEditing(false)}
             autoFocus
           />
         ) : (
@@ -52,17 +72,17 @@ const Todo = ({ name, completed, id }) => {
         )}
       </div>
       <div className="todo-right">
-      {isEditing ? (
-          <button onClick={handleSave}>Save</button>
+        {isEditing ? (
+          <button className="button-save" onClick={handleSave}>Save</button>
         ) : (
           <i
-          class="fa-regular fa-pen-to-square edit-icon"
-          onClick={handleEditButtonClicked}
-        ></i>
+            class="fa-regular fa-pen-to-square edit-icon"
+            onClick={handleEditButtonClicked}
+          ></i>
         )}
-        
+
         <i
-          class="fa-solid fa-trash-can"
+          class="fa-solid fa-trash-can remote-icon"
           onClick={handleRemoveButtonClicked}
         ></i>
       </div>

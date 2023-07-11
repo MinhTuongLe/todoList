@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TodoListSlice from "../../redux/TodoListSlice";
 import { v4 as uuidv4 } from "uuid";
 import "./TodoList.css";
-
+import { toast } from "react-toastify";
 const TodoList = () => {
   const dispatch = useDispatch();
   const [todoName, setTodoName] = useState("");
@@ -12,15 +12,20 @@ const TodoList = () => {
   const todoNameInputRef = useRef(null);
 
   const handleAddTodoButtonClicked = () => {
-    dispatch(
-      TodoListSlice.actions.addTodo({
-        id: uuidv4(),
-        name: todoName,
-        completed: false,
-      })
-    );
-    setTodoName("");
-    todoNameInputRef.current.focus();
+    try {
+      dispatch(
+        TodoListSlice.actions.addTodo({
+          id: uuidv4(),
+          name: todoName,
+          completed: false,
+        })
+      );
+      setTodoName("");
+      todoNameInputRef.current.focus();
+      toast.success("Add Successfully!", { autoClose: 1000 });
+    } catch (err) {
+      toast.error("Add Failed!", { autoClose: 1000 });
+    }
   };
 
   const handleInputChaged = (e) => {
@@ -28,19 +33,24 @@ const TodoList = () => {
   };
 
   const handleCompletedAllTasks = () => {
-    dispatch(TodoListSlice.actions.completedAllTask());
-    localStorage.setItem("todoList", JSON.stringify(todoList));
-    window.location.reload()
+    try {
+      dispatch(TodoListSlice.actions.completedAllTask());
+      localStorage.setItem("todoList", JSON.stringify(todoList));
+      window.location.reload();
+      toast.success("Checked tasks Successfully!", { autoClose: 1000 });
+    } catch (error) {
+      toast.error("Checked tasks Failed!", { autoClose: 1000 });
+    }
   };
 
   const handleRemoveCompletedTasks = () => {
-    dispatch(TodoListSlice.actions.removeCompletedTasks());
-    localStorage.setItem("todoList", JSON.stringify(todoList));
-  };
-
-  const handleRemoveTodo = (id) => {
-    dispatch(TodoListSlice.actions.removeTodo(id));
-    localStorage.setItem("todoList", JSON.stringify(todoList));
+    try {
+      dispatch(TodoListSlice.actions.removeCompletedTasks());
+      localStorage.setItem("todoList", JSON.stringify(todoList));
+      toast.success("Remove tasks Successfully!", { autoClose: 1000 });
+    } catch (error) {
+      toast.error("Remove tasks failed!", { autoClose: 1000 });
+    }
   };
 
   useEffect(() => {
@@ -88,7 +98,7 @@ const TodoList = () => {
             completed={todo.completed}
             id={todo.id}
             key={todo.id}
-            onRemoveTodo={handleRemoveTodo}
+            // onRemoveTodo={handleRemoveTodo}
             isFirst={index === 0}
           />
         ))}
