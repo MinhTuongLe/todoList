@@ -1,4 +1,4 @@
-.todolist-section{ 
+.todolist-section {
     border: 1px solid #000;
     border-radius: 5%;
     width: 40%;
@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-.todolist-title h1{
+.todolist-title h1 {
     color: #2f2fe0;
     margin-left: 12px;
 }
@@ -82,11 +82,12 @@
     font-size: 1.2rem;
 }
 
-.complete-alltasks i{
+.complete-alltasks i {
     margin-right: 12px;
 }
 
-.complete-alltasks:hover, .delete-alltasks:hover{
+.complete-alltasks:hover,
+.delete-alltasks:hover {
     cursor: pointer;
 }
 
@@ -108,7 +109,8 @@
     cursor: pointer;
 }
 
-.bottom-group button:hover, .add-section button:hover{
+.bottom-group button:hover,
+.add-section button:hover {
     filter: brightness(90%);
 }
 
@@ -121,4 +123,8 @@
     max-height: 40%;
     overflow-y: scroll;
     margin-bottom: 42px;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

@@ -3,13 +3,12 @@ import Todo from "../Todo/Todo";
 import { useDispatch, useSelector } from "react-redux";
 import TodoListSlice from "../../redux/TodoListSlice";
 import { v4 as uuidv4 } from "uuid";
-import { todoRemainingSelector } from "../../redux/selector";
 import "./TodoList.css";
 
 const TodoList = () => {
   const dispatch = useDispatch();
   const [todoName, setTodoName] = useState("");
-  const todoList = useSelector(todoRemainingSelector);
+  const todoList = useSelector((state) => state.todoList);
   const todoNameInputRef = useRef(null);
 
   const handleAddTodoButtonClicked = () => {
@@ -30,15 +29,29 @@ const TodoList = () => {
 
   const handleCompletedAllTasks = () => {
     dispatch(TodoListSlice.actions.completedAllTask());
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+    window.location.reload()
   };
 
   const handleRemoveCompletedTasks = () => {
     dispatch(TodoListSlice.actions.removeCompletedTasks());
+    localStorage.setItem("todoList", JSON.stringify(todoList));
   };
+
+  const handleRemoveTodo = (id) => {
+    dispatch(TodoListSlice.actions.removeTodo(id));
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+    todoNameInputRef.current.focus();
+  }, [todoList]);
 
   useEffect(() => {
     todoNameInputRef.current.focus();
   }, []);
+
   return (
     <div className="todolist-section">
       <div className="todolist-title">
@@ -69,14 +82,22 @@ const TodoList = () => {
         </div>
       </div>
       <div className="list-section">
-        {todoList.map((todo) => (
-          <Todo name={todo.name} completed={todo.completed} id={todo.id}/>
+        {todoList.map((todo, index) => (
+          <Todo
+            name={todo.name}
+            completed={todo.completed}
+            id={todo.id}
+            key={todo.id}
+            onRemoveTodo={handleRemoveTodo}
+            isFirst={index === 0}
+          />
         ))}
       </div>
       <div className="bottom-group">
         <button>Filter</button>
         <span>
-          Completed: {todoList.filter((todo) => todo.completed).length}
+          {" "}
+          Completed: {todoList.filter((todo) => todo.completed).length}{" "}
         </span>
         <span className="total-tasks">Total Tasks: {todoList.length}</span>
       </div>

@@ -25,16 +25,27 @@ export default createSlice({
       localStorage.setItem("todoList", JSON.stringify(updatedState));
       return updatedState;
     },
+    updateTodo: (state, action) => {
+      const {name, id} = action.payload;
+      const currentTodo = state.find((todo) => todo.id === id);
+      if (currentTodo) {
+        currentTodo.name = name;
+        localStorage.setItem("todoList", JSON.stringify(state));
+      }
+    },
     completedAllTask: (state) => {
-      state.forEach((todo) => {
+      const updatedTodoList = state.map((todo) => {
         if (!todo.completed) {
-          todo.completed = true;
+          return { ...todo, completed: true };
+        } else {
+          return todo;
         }
       });
-      localStorage.setItem("todoList", JSON.stringify(state));
+      localStorage.setItem("todoList", JSON.stringify(updatedTodoList));
+      return updatedTodoList;
     },
     removeCompletedTasks: (state) => {
-      const updatedState = state.filter((todo) => todo.completed !== true);
+      const updatedState = state.filter((todo) => !todo.completed);
       localStorage.setItem("todoList", JSON.stringify(updatedState));
       return updatedState;
     },

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import TodoListSlice from "../../redux/TodoListSlice";
+import todoListSlice from "../../redux/TodoListSlice";
 import "./Todo.css"
 const Todo = ({name, completed, id}) => {
   const dispatch = useDispatch()
@@ -8,11 +8,11 @@ const Todo = ({name, completed, id}) => {
 
   const toggleCheckbox = () => {
     setChecked(!checked)
-    dispatch(TodoListSlice.actions.toggleStatus(id))
+    dispatch(todoListSlice.actions.toggleStatus(id))
   }
 
   const handleRemoveButtonClicked = () => {
-    dispatch(TodoListSlice.actions.removeTodo(id))
+    dispatch(todoListSlice.actions.removeTodo(id))
   }
 
   return (
