@@ -26,10 +26,11 @@ export default createSlice({
       return updatedState;
     },
     updateTodo: (state, action) => {
-      const {name, id} = action.payload;
-      const currentTodo = state.find((todo) => todo.id === id);
-      if (currentTodo) {
-        currentTodo.name = name;
+      const { id, name } = action.payload;
+      const todoIndex = state.findIndex((todo) => todo.id === id);
+      console.log(todoIndex)
+      if (todoIndex !== -1) {
+        state[todoIndex].name = name;
         localStorage.setItem("todoList", JSON.stringify(state));
       }
     },
