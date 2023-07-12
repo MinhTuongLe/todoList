@@ -35,7 +35,7 @@ const TodoList = () => {
   const handleCompletedAllTasks = () => {
     try {
       dispatch(TodoListSlice.actions.completedAllTask());
-      localStorage.setItem("todoList", JSON.stringify(todoList));
+      // localStorage.setItem("todoList", JSON.stringify(todoList));
       window.location.reload();
       toast.success("Checked tasks Successfully!", { autoClose: 1000 });
     } catch (error) {
@@ -46,7 +46,7 @@ const TodoList = () => {
   const handleRemoveCompletedTasks = () => {
     try {
       dispatch(TodoListSlice.actions.removeCompletedTasks());
-      localStorage.setItem("todoList", JSON.stringify(todoList));
+      // localStorage.setItem("todoList", JSON.stringify(todoList));
       toast.success("Remove tasks Successfully!", { autoClose: 1000 });
     } catch (error) {
       toast.error("Remove tasks failed!", { autoClose: 1000 });

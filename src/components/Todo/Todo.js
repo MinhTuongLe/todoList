@@ -43,7 +43,6 @@ const Todo = ({ name, completed, id }) => {
       );
       setIsEditing(false);
       toast.success("Save Successfully!", { autoClose: 1000 });
-      window.location.reload();
     } catch (error) {
       toast.error("Save Failed!", { autoClose: 1000 });
     }
