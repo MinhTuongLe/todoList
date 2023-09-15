@@ -37,7 +37,6 @@ export default createSlice({
       localStorage.setItem("todoList", JSON.stringify(updatedTodoList));
       return updatedTodoList;
     },
-    
     completedAllTask: (state) => {
       const updatedTodoList = state.map((todo) => {
         if (!todo.completed) {

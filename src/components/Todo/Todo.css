@@ -1,53 +1,76 @@
 .todo-section {
-    display: flex;
-    justify-content: space-between;
-    width: 32vw;
-    padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  width: 32vw;
+  padding: 12px;
 }
 
 .todo-left {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
+  width: 80%;
+  display: flex;
 }
 
 .todo-left input {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .todo-right {
-    font-size: 1.2rem;
+  font-size: 1.2rem;
+  display: flex;
 }
 
 .todo-right .edit-icon {
-    margin-right: 8px;
-    cursor: pointer;
+  cursor: pointer;
+  display: block;
 }
 
-.remote-icon {
-    cursor: pointer;
+.remove-icon {
+  cursor: pointer;
+  color: #f00;
+  display: block;
 }
 
 .edit-input {
-    border: none;
-    font-size: 1.2rem;
-    outline: none;
+  border: none;
+  font-size: 1.2rem;
+  outline: none;
 }
 
 .edit-input:focus {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
-.button-save {
-    background-color: #5dae4f;
-    border: 1px #fff solid;
-    color: #fff;
-    padding: 8px 16px;
-    font-size: 1rem;
-    border-radius: 8px;
-    margin-right: 16px;
-    cursor: pointer;
+.todo-right .save-icon {
+  color: #5dae4f;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: block;
 }
 
-.button-save:hover {
-    filter: brightness(90%);
+.task-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  display: block;
+}
+
+@media screen and (width < 1400px) {
+  .todo-section {
+    width: 54vw !important;
+  }
+}
+
+@media screen and (width < 992px) {
+  .todo-section {
+    width: 80vw !important;
+  }
+}
+
+@media screen and (width < 768px) {
+  .todo-section {
+    width: 90vw !important;
+  }
 }

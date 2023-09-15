@@ -1,132 +1,166 @@
 .todolist-section {
-    border: 1px solid #000;
-    border-radius: 5%;
-    width: 40%;
-    height: 80%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    background-color: #fff;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 5%;
+  width: 40%;
+  height: 80%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: #fff;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .todolist-title {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 .todolist-title h1 {
-    color: #2f2fe0;
-    margin-left: 12px;
+  color: #609dbf;
+  margin-left: 12px;
 }
 
 .todolist-title i {
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 .add-section {
-    border: none;
-    width: 80%;
-    height: 52px;
-    /* padding: 12px 0; */
-    border-radius: 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ddd;
+  border: none;
+  width: 80%;
+  height: 52px;
+  /* padding: 12px 0; */
+  border-radius: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ddd;
 }
 
 .add-section button {
-    background-color: #f55640;
-    color: #fff;
-    font-size: 1.4rem;
-    border-radius: 28px;
-    width: 20%;
-    /* padding: 12px 18px; */
-    cursor: pointer;
-    border: none;
-    height: 100%;
+  background-color: #609dbf;
+  color: #fff;
+  font-size: 1.4rem;
+  border-radius: 28px;
+  width: 20%;
+  /* padding: 12px 18px; */
+  cursor: pointer;
+  border: none;
+  height: 100%;
 }
 
 .input-section {
-    margin-left: 16px;
-    width: 80%;
-    display: flex;
-    align-items: center;
+  margin-left: 16px;
+  width: 80%;
+  display: flex;
+  align-items: center;
 }
 
 .input-section i {
-    font-size: 1.4rem;
-    margin-right: 12px;
+  font-size: 1.4rem;
+  margin-right: 12px;
 }
 
 .input-section input {
-    /* padding: 12px 24px; */
-    width: 60%;
-    font-size: 1.2rem;
-    border: none;
-    background-color: #ddd;
-    padding-left: 12px;
+  /* padding: 12px 24px; */
+  width: 60%;
+  font-size: 1.2rem;
+  border: none;
+  background-color: #ddd;
+  padding-left: 12px;
 }
 
 .input-section input:focus {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .alltasks-choice {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-top: 24px;
-    margin-bottom: 32px;
-    font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  font-size: 1.2rem;
 }
 
 .complete-alltasks i {
-    margin-right: 12px;
+  margin-right: 12px;
 }
 
 .complete-alltasks:hover,
 .delete-alltasks:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .bottom-group {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    font-size: 1.2rem;
-    align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 1.2rem;
+  align-items: center;
 }
 
 .bottom-group button {
-    background-color: #5dae4f;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
+  background-color: #5dae4f;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .bottom-group button:hover,
 .add-section button:hover {
-    filter: brightness(90%);
+  filter: brightness(90%);
 }
 
 .total-tasks {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .list-section {
-    height: 40%;
-    max-height: 40%;
-    overflow-y: scroll;
-    margin-bottom: 42px;
+  height: 40%;
+  max-height: 40%;
+  overflow-y: scroll;
+  margin-bottom: 42px;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
+}
+
+@media screen and (width < 1400px) {
+  .todolist-section {
+    width: 60% !important;
+  }
+
+  .add-section,
+  .alltasks-choice {
+    width: 90% !important;
+  }
+}
+
+@media screen and (width < 992px) {
+  .todolist-section {
+    width: 90% !important;
+  }
+
+  .add-section,
+  .alltasks-choice {
+    width: 90% !important;
+  }
+}
+
+@media screen and (width < 768px) {
+  .todolist-section {
+    width: 100% !important;
+    border-radius: 0;
+  }
+
+  .add-section,
+  .alltasks-choice {
+    width: 90% !important;
+  }
 }
