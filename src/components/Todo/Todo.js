@@ -53,6 +53,13 @@ const Todo = ({ name, completed, id }) => {
     }
   };
 
+  // Enter to save task
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSave();
+    }
+  };
+
   return (
     <div className="todo-section">
       <div className="todo-left">
@@ -69,6 +76,7 @@ const Todo = ({ name, completed, id }) => {
             value={updatedTodoName}
             onChange={(event) => setUpdatedTodoName(event.target.value)}
             autoFocus
+            onKeyDown={handleKeyDown}
           />
         ) : (
           <span

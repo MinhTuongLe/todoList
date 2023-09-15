@@ -63,6 +63,12 @@
   }
 }
 
+@media screen and (width < 1200px) {
+  .todo-section {
+    width: 72vw !important;
+  }
+}
+
 @media screen and (width < 992px) {
   .todo-section {
     width: 80vw !important;

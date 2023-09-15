@@ -88,6 +88,11 @@
   margin-right: 12px;
 }
 
+.complete-alltasks,
+.delete-alltasks {
+  font-size: 1rem;
+}
+
 .complete-alltasks:hover,
 .delete-alltasks:hover {
   cursor: pointer;
@@ -134,6 +139,17 @@
 @media screen and (width < 1400px) {
   .todolist-section {
     width: 60% !important;
+  }
+
+  .add-section,
+  .alltasks-choice {
+    width: 90% !important;
+  }
+}
+
+@media screen and (width < 1200px) {
+  .todolist-section {
+    width: 80% !important;
   }
 
   .add-section,
